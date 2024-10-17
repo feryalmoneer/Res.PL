@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Re.PL.Data;
+using Re.DAL.Data;
 
 namespace Re.PL
 {
