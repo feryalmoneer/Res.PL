@@ -1,0 +1,31 @@
+﻿@model SerDelailsVM
+@section Header {
+  _
+
+}
+
+<div class="col-md-8">
+    <div class="card" style="font-family: 'Times New Roman', serif;">
+        <div class="card-header">
+            <h4>ServiceVmForm for @Model.Name</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Name: </strong>@Model.Name
+                </li>
+                <li class="list-group-item">
+                    <strong>Description: </strong>@Model.Discription
+                </li>
+                <li class="list-group-item">
+                    <strong>Created At: </strong>@Model.CreatedAt
+                </li>
+                <li class="list-group-item">
+                    <strong>Status: </strong> @(Model.IsDeleted ? "Deleted" : "Active")
+                </li>
+             
+            </ul>
+        </div>
+    </div>
+</div>
+

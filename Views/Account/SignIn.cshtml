@@ -1,0 +1,26 @@
+﻿@model LoginVM
+
+<div class="card-body">
+    <form method="POST" asp-action="SignIn" asp-controller="Account">
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control" type="password" placeholder="Enter your password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <!-- Add the RememberMe checkbox here -->
+        <div class="mb-3 form-check">
+            <input asp-for="RememberMe" class="form-check-input" type="checkbox">
+            <label asp-for="RememberMe" class="form-check-label">Remember Me</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+    </form>
+</div>

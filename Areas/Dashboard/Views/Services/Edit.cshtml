@@ -1,0 +1,33 @@
+﻿@model ServiceVmForm
+@section Header {
+    Edit Services
+}
+<div class="col-md-8">
+
+    <div class="card card-gray">
+
+        <form asp-controller="Services" asp-action="Edit">
+            <div class="card-body">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label for="Name">Service Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="Discription">Discription</label>
+                    <input asp-for="Discription" class="form-control" placeholder="Discription">
+                </div>
+                <div class="form-group">
+                    <label for="IsDeleted">IsDeleted</label>
+                    <input asp-for="IsDeleted"  placeholder="Discription">
+                    <span>@(Model.IsDeleted ? "dELETE" : "ACTIVE")</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-gray">UPDATE</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+   

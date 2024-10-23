@@ -1,0 +1,34 @@
+﻿@model BlogDe
+@section Header {
+  _
+
+}
+
+<div class="col-md-8">
+    <div class="card" style="font-family: 'Times New Roman', serif;">
+        <div class="card-header">
+            <h4>ServiceVmForm for @Model.BlogTitle</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Name: </strong>@Model.BlogTitle
+                </li>
+                <li class="list-group-item">
+                    <strong>Description: </strong>@Model.Discription
+                </li>
+                <li class="list-group-item">
+                    <strong>Created At: </strong>@Model.CreatedAt
+                </li>
+                  <li class="list-group-item">
+                    <strong>Img:
+                    </strong> <img src="~/files/images/@Model.NameOfImg" width="100%" height="50%"  />
+                          
+                </li>
+                
+
+            </ul>
+        </div>
+    </div>
+</div>
+

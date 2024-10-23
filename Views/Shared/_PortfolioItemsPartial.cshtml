@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Items>
+
+@foreach (var item in Model)
+{
+    <div class="col mb-4 portfolio-item">
+        <img src="~/files/images/@item.NameOfImg" class="img-fluid" alt="soso">
+    </div>
+}

@@ -1,0 +1,28 @@
+﻿@model PortfolioVMForm
+@section Header {
+    Edit Services
+}
+<div class="col-md-8">
+
+    <div class="card card-gray">
+
+        <form asp-controller="Portfolios" asp-action="Edit">
+            <div class="card-body">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label for="Name">Service Name</label>
+                    <input asp-for="Name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="CreatedAt">CreatedAt</label>
+                    <input asp-for="CreatedAt" class="form-control">
+                </div>
+               
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-gray">UPDATE</button>
+            </div>
+        </form>
+    </div>
+
+</div>
