@@ -1,287 +1,193 @@
 ﻿@using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
-    <link rel="stylesheet" href="~/css/acount.css" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Bruno+Ace+SC&display=swap" rel="stylesheet" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" >
+<!-- Bootstrap & Fonts -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="~/css/acount.css">
+<link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    @{
-        ViewData["Title"] = "Arch-MVC Project";
-        var sliders = ViewBag.Sliders as List<Re.DAL.Models.Slider>;
-        var portfolios = ViewBag.Portfolios as List<Re.DAL.Models.Portfolios>;
-        var items = ViewBag.Items as List<Re.DAL.Models.Items>;   
-        var services = ViewBag.Servicesp as List<Re.DAL.Models.Services>;
-        var blogs = ViewBag.Blogs as List<Re.DAL.Models.Blogs>;
+@{
+    ViewData["Title"] = "Arch-MVC Project";
+    var sliders = ViewBag.Sliders as List<Re.DAL.Models.Slider>;
+    var portfolios = ViewBag.Portfolios as List<Re.DAL.Models.Portfolios>;
+    var items = ViewBag.Items as List<Re.DAL.Models.Items>;
+    var services = ViewBag.Servicesp as List<Re.DAL.Models.Services>;
+    var blogs = ViewBag.Blogs as List<Re.DAL.Models.Blogs>;
+}
 
-    }
-
-    <!--Main Section Done -->
-<div class="slider-container slider-custom">
-
-    <div class="slider-container my-5">
-        <div id="sliderCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @if (sliders != null && sliders.Any())
+<!-- Main Slider Section -->
+<div class="slider-container slider-custom my-5">
+    <div id="sliderCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @if (sliders != null && sliders.Any())
+            {
+                int i = 0;
+                foreach (var slider in sliders)
                 {
-                    int i = 0;
-                    foreach (var slider in sliders)
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <!-- جعل الصورة تتناسب مع عرض السلايدر -->
-                            <img src="~/files/images/@slider.NameOfImg" class="d-block w-100" alt="@slider.Title" style="max-height: 500px; object-fit: cover;">
-                            <div class="carousel-caption d-none d-md-block text-center" style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
-                                <h3 class="lobster-regular">@slider.Title</h3>
-                            </div>
-
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img src="~/files/images/@slider.NameOfImg" class="d-block w-100" alt="@slider.Title" style="max-height: 500px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block text-center">
+                            <h3 class="lobster-regular">@slider.Title</h3>
                         </div>
-                        i++;
-                    }
+                    </div>
+                    i++;
                 }
-                else
-                {
-                    <p>No sliders available.</p>
-                }
-            </div>
+            }
+            else
+            {
+                <p>No sliders available.</p>
+            }
+        </div>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#sliderCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#sliderCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 
-            <!-- أزرار التحكم في السلايدر -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#sliderCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#sliderCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+<!-- About Section -->
+<section id="about" class="scrollspy-section padding-xlarge">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center">
+                    <span class="bruno-ace-sc-regular">Who Are We</span>
+                    <h2 class="bruno-ace-sc-regular">About Us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <figure>
+                    <img src="~/files/images/singleimage.jpg" alt="about us" class="img-fluid">
+                </figure>
+            </div>
+            <div class="col-md-6 description">
+                <p><strong>Lorem ipsum dolor sit amet...</strong></p>
+                <a href="#" class="btn btn-accent btn-xlarge btn-rounded">View My Portfolio</a>
+            </div>
         </div>
     </div>
-    <!-- end Main Section -->
-    <!-- About Section-->
-    <section id="about" class="scrollspy-section padding-xlarge">
-        <div class="container">
-            <div class="row">
+</section>
 
-                <div class="col-md-12">
-
-                    <div class="section-header">
-                        <div class="tilte">
-                            <span class=" bruno-ace-sc-regular ">who are we</span>
-                        </div>
-                        <h2 class="bruno-ace-sc-regular">About Us</h2>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-6">
-                    <figure class="jarallax-keep-img">
-                        <img src="~/files/images/singleimage.jpg" alt="about us" class="jarallax-img single-image">
-                    </figure>
-                </div>
-                <div class="col-md-6 description text-lead">
-                    <p>
-                        <strong>
-                            Amet, consectetur adipiscing elit. Commodo viverra eu volutpat amet, leo ultrici non
-                            senectus odio dolor. Id at urna non porttitor elentum. Viverra senectus lorem ipsum dolor
-                            sit adui ultricies dolor varius nibh velit viverra euen.
-                        </strong>
-                    </p>
-
-                    <div class="btn-wrap">
-                        <a href="#" class="btn btn-accent btn-xlarge btn-rounded">View my portfolio</a>
-                    </div>
-                </div>
-
-            </div>
-
+<!-- Portfolio Section -->
+<section id="portfolio" class="scrollspy-section padding-large">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="bruno-ace-sc-regular">Some of Our Works</span>
+            <h2 class="section-title light bruno-ace-sc-regular">Our Portfolio</h2>
+            <hr>
         </div>
-    </section>
-    <!--End  About Section-->
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="scrollspy-section padding-large">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-header">
-                        <div class="title bruno-ace-sc-regular">
-                            <span>Some of Our Works</span>
-                            <hr />
-                        </div>
-                        <h2 class="section-title light bruno-ace-sc-regular">Our Portfolio</h2>
+        <div class="row button-group text-center py-5" data-aos="fade-up">
+            @foreach (var p in portfolios)
+            {
+                <a href="#" class="btn btn-outline-dark rounded-pill text-uppercase filter-button" data-filter="@p.Id">@p.Name</a>
+            }
+        </div>
+        <div class="grid row" id="portfolio-items" data-aos="fade-up">
+            @foreach (var item in items)
+            {
+                <div class="col portfolio-item" data-portfolio-id="@item.PortfoliosId">
+                    <div class="card h-100">
+                        <img src="~/files/images/@item.NameOfImg" alt="@item.NameOfImg" class="card-img-top" style="height: 200px; object-fit: cover;">
                     </div>
                 </div>
-            </div>
+            }
+        </div>
+    </div>
+</section>
 
-            <div class="row">
-                <div class="button-group d-flex flex-wrap gap-4 py-5" data-aos="fade-up">
-                    @foreach (var p in portfolios)
-                    {
-                        <a href="#" class="btn btn-outline-dark rounded-pill text-uppercase filter-button"
-                           data-filter="@p.Id">@p.Name</a>
-                    }
-                </div>
-
-            </div>
-            <div class="grid p-0 clearfix row row-cols-2 row-cols-lg-3" id="portfolio-items" data-aos="fade-up">
-                @foreach (var item in items)
+<!-- Services Section -->
+<section class="scrollspy-section padding-large">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="bruno-ace-sc-regular">Services</h2>
+        </div>
+        <div class="row">
+            @if (services != null && services.Any())
+            {
+                int counter = 1;
+                foreach (var service in services)
                 {
-                    <div class="col portfolio-item" data-portfolio-id="@item.PortfoliosId">
-                        <div class="card h-100">
-                            <img src="~/files/images/@item.NameOfImg" alt="soso" class="card-img-top" style="object-fit: cover; height: 200px;" />
-                         
+                    <div class="col-md-4 mb-4">
+                        <div class="services-item text-center">
+                            <span class="number lobster-regular">@counter.ToString("D2")</span>
+                            <h3 class="fw-bold lobster-regular">@service.Name</h3>
+                            <p>@service.Discription</p>
                         </div>
                     </div>
+                    counter++;
                 }
-            </div>
-
-            
-
-
+            }
+            else
+            {
+                <p>No services available.</p>
+            }
         </div>
-    </section>
-    <!-- Services Section done -->
-    <section class="scrollspy-section padding-large">
-        <div class="container">
-            <div class="row">
-                <div class="section-header col-12">
-      
-                    <h2 class=" bruno-ace-sc-regular">Services</h2>
-                </div>
-            </div>
-            <div class="row">
-                @if (services != null && services.Any())
+    </div>
+</section>
+
+<!-- Blogs Section -->
+<section id="latest-blog" class="scrollspy-section padding-large">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="text-secondary bruno-ace-sc-regular">Read Our Blog</span>
+            <h2 class="text-secondary bruno-ace-sc-regular">Latest Blog</h2>
+        </div>
+        <div class="row post-grid">
+            @if (blogs != null && blogs.Any())
+            {
+                foreach (var blog in blogs)
                 {
-                    int counter = 1;
-                    foreach (var service in services)
-                    {
-                        <div class="col-md-4 mb-4">
-                            <div class="services-item position-relative">
-                                <!-- رقم صغير في الخلفية -->
-                                <span class="number lobster-regular">@counter.ToString("D2")</span>
-
-                                <!-- عنوان الخدمة -->
-                                <h3 class="fw-bold lobster-regular ">@service.Name</h3>
-
-                                <!-- وصف الخدمة -->
-                                <p>@service.Discription</p>
+                    <div class="col-md-4">
+                        <article class="post-item border rounded p-3 mb-4">
+                            <figure class="text-center">
+                                <a href="#" class="image-hvr-effect">
+                                    <img src="~/files/images/@blog.NameOfImg" alt="@blog.BlogTitle" class="img-fluid">
+                                </a>
+                            </figure>
+                            <div class="post-content text-center">
+                                <div class="meta-date text-secondary">@blog.CreatedAt</div>
+                                <h3 class="text-muted lobster-regular">@blog.BlogTitle</h3>
+                                <p class="text-muted">@blog.Discription</p>
                             </div>
-                        </div>
-                        counter++;
-                    }
+                        </article>
+                    </div>
                 }
-                else
-                {
-                    <p>No services available.</p>
-                }
-            </div>
+            }
+            else
+            {
+                <p class="text-warning text-center">No blogs available at the moment.</p>
+            }
         </div>
-    </section>
-    <!--end  Services Section -->
-        <!-- Blogs Section  -->
-    <section id="latest-blog" class="scrollspy-section  padding-large">
-        <div class="container">
-
-            <div class="row">
-                <div class="col">
-                    <div class="section-header">
-                        <div class="bruno-ace-sc-regular">
-                            <span class="  text-secondary bruno-ace-sc-regular">read our blog</span> <!-- تعديل اللون -->
-                        </div>
-                        <h2 class="bruno-ace-sc-regular text-secondary ">latest blog</h2> <!-- تعديل اللون -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="post-grid">
-                        <div class="row">
-                            @if (blogs != null && blogs.Any())
-                            {
-                                foreach (var blog in blogs)
-                                {
-                                    <div class="col-md-4">
-                                        <article class="post-item border border-light rounded p-3 mb-4">
-                                
-                                            <figure class="text-center">
-                                                <a href="#" class="image-hvr-effect">
-                                                    <img src="~/files/images/@blog.NameOfImg" alt="post" class="post-image img-fluid" style="width: 100%; height: auto;">
-                                                </a>
-                                            </figure>
-                                            <div class="post-content text-center">
-                                                <div class="meta-date text-secondary font-weight-bold">@blog.CreatedAt</div>
-                                                <h3 class="text-muted lobster-regular">
-                                                    @blog.BlogTitle
-                                                </h3>
-                                                <p class="text-muted lobster-regular">@blog.Discription</p> 
-                                            </div>
-                                        </article>
-                                    </div>
-                                }
-                            }
-                            else
-                            {
-                                <div class="col-md-12 text-center">
-                                    <p class="text-warning">No blogs available at the moment.</p> 
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col text-center">
-                    <div class="btn-wrap align-center">
-                        <a href="#" class="btn btn-xlarge btn-accent btn-rounded text-danger border border-success">View all blog</a> 
-                    </div>
-                </div>
-            </div>
-
+        <div class="row text-center">
+            <a href="#" class="btn btn-accent btn-xlarge btn-rounded">View All Blog</a>
         </div>
-    </section>
-    <!--  end Blogs Section  -->
+    </div>
+</section>
 
-    @section scripts {
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.filter-button').click(function (e) {
-                    e.preventDefault(); // لمنع إعادة تحميل الصفحة
-                    var filterValue = $(this).data('filter');
-
-                    // إظهار العناصر التي تطابق الفلتر وإخفاء البقية
-                    $('#portfolio-items > .portfolio-item').hide(); // إخفاء جميع العناصر
-                    $('#portfolio-items > .portfolio-item[data-portfolio-id="' + filterValue + '"]').show(); // إظهار العناصر المطابقة
-
-                    // اختياري: قم بتفعيل الزر المحدد
-                    $('.filter-button').removeClass('is-checked'); // إزالة التحديد عن جميع الأزرار
-                    $(this).addClass('is-checked'); // إضافة التحديد للزر الحالي
-                });
+<!-- Scripts -->
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.filter-button').click(function (e) {
+                e.preventDefault();
+                var filterValue = $(this).data('filter');
+                $('#portfolio-items > .portfolio-item').hide();
+                $('#portfolio-items > .portfolio-item[data-portfolio-id="' + filterValue + '"]').show();
+                $('.filter-button').removeClass('is-checked');
+                $(this).addClass('is-checked');
             });
-        </script>
-
-
-<script>
-  const formWrapper = document.querySelector(".formbold-form-wrapper");
-  const formActionButton = document.querySelector(".formbold-action-btn");
-  function chatboxToogleHandler() {
-    formWrapper.classList.toggle("active");
-    formActionButton.classList.toggle("active");
-  }
-
-        </script>
-
+        });
+    </script>
 }
+
